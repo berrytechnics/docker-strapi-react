@@ -1,0 +1,1 @@
+docker-compose down && docker system prune --force && docker volume prune --force && docker-compose build && docker-compose up

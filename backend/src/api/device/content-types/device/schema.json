@@ -4,7 +4,8 @@
   "info": {
     "singularName": "device",
     "pluralName": "devices",
-    "displayName": "Device"
+    "displayName": "Device",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,22 +20,21 @@
         "Watch",
         "Console",
         "Other"
-      ]
+      ],
+      "required": true
     },
     "make": {
       "type": "string"
     },
     "model": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "repairs": {
-      "type": "json"
-    },
-    "repair": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::repair.repair",
-      "inversedBy": "devices"
+      "mappedBy": "device"
     }
   }
 }

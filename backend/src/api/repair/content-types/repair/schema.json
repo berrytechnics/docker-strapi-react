@@ -4,21 +4,29 @@
   "info": {
     "singularName": "repair",
     "pluralName": "repairs",
-    "displayName": "Repair"
+    "displayName": "Repair",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "battery": {
-      "type": "decimal"
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": false
     },
-    "devices": {
+    "device": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::device.device",
-      "mappedBy": "repair"
+      "inversedBy": "repairs"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "min": 1
     }
   }
 }

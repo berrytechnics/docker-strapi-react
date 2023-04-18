@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-04-18T01:10:14.055Z"
+    "x-generation-date": "2023-04-18T03:01:00.383Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -94,7 +94,10 @@
         ],
         "properties": {
           "data": {
-            "required": [],
+            "required": [
+              "type",
+              "model"
+            ],
             "type": "object",
             "properties": {
               "type": {
@@ -113,17 +116,19 @@
               "model": {
                 "type": "string"
               },
-              "repairs": {},
-              "repair": {
-                "oneOf": [
-                  {
-                    "type": "integer"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": "string or id"
+              "repairs": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "example": "string or id"
+                }
               }
             }
           }
@@ -154,29 +159,27 @@
               "model": {
                 "type": "string"
               },
-              "repairs": {},
-              "repair": {
+              "repairs": {
                 "type": "object",
                 "properties": {
                   "data": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "number"
-                      },
-                      "attributes": {
-                        "type": "object",
-                        "properties": {
-                          "battery": {
-                            "type": "number",
-                            "format": "float"
-                          },
-                          "devices": {
-                            "type": "object",
-                            "properties": {
-                              "data": {
-                                "type": "array",
-                                "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "attributes": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "device": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -201,19 +204,21 @@
                                         "model": {
                                           "type": "string"
                                         },
-                                        "repairs": {},
-                                        "repair": {
+                                        "repairs": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "number"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "number"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }
@@ -521,49 +526,53 @@
                                   }
                                 }
                               }
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "updatedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "publishedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "createdBy": {
-                            "type": "object",
-                            "properties": {
-                              "data": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "attributes": {
-                                    "type": "object",
-                                    "properties": {}
+                            },
+                            "price": {
+                              "type": "number",
+                              "format": "float"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "publishedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "createdBy": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "number"
+                                    },
+                                    "attributes": {
+                                      "type": "object",
+                                      "properties": {}
+                                    }
                                   }
                                 }
                               }
-                            }
-                          },
-                          "updatedBy": {
-                            "type": "object",
-                            "properties": {
-                              "data": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "attributes": {
-                                    "type": "object",
-                                    "properties": {}
+                            },
+                            "updatedBy": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "number"
+                                    },
+                                    "attributes": {
+                                      "type": "object",
+                                      "properties": {}
+                                    }
                                   }
                                 }
                               }
@@ -650,29 +659,27 @@
               "model": {
                 "type": "string"
               },
-              "repairs": {},
-              "repair": {
+              "repairs": {
                 "type": "object",
                 "properties": {
                   "data": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "number"
-                      },
-                      "attributes": {
-                        "type": "object",
-                        "properties": {
-                          "battery": {
-                            "type": "number",
-                            "format": "float"
-                          },
-                          "devices": {
-                            "type": "object",
-                            "properties": {
-                              "data": {
-                                "type": "array",
-                                "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "attributes": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "device": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -697,19 +704,21 @@
                                         "model": {
                                           "type": "string"
                                         },
-                                        "repairs": {},
-                                        "repair": {
+                                        "repairs": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "number"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "number"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }
@@ -1017,49 +1026,53 @@
                                   }
                                 }
                               }
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "updatedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "publishedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "createdBy": {
-                            "type": "object",
-                            "properties": {
-                              "data": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "attributes": {
-                                    "type": "object",
-                                    "properties": {}
+                            },
+                            "price": {
+                              "type": "number",
+                              "format": "float"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "publishedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "createdBy": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "number"
+                                    },
+                                    "attributes": {
+                                      "type": "object",
+                                      "properties": {}
+                                    }
                                   }
                                 }
                               }
-                            }
-                          },
-                          "updatedBy": {
-                            "type": "object",
-                            "properties": {
-                              "data": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "attributes": {
-                                    "type": "object",
-                                    "properties": {}
+                            },
+                            "updatedBy": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "number"
+                                    },
+                                    "attributes": {
+                                      "type": "object",
+                                      "properties": {}
+                                    }
                                   }
                                 }
                               }
@@ -1179,29 +1192,27 @@
               "model": {
                 "type": "string"
               },
-              "repairs": {},
-              "repair": {
+              "repairs": {
                 "type": "object",
                 "properties": {
                   "data": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "number"
-                      },
-                      "attributes": {
-                        "type": "object",
-                        "properties": {
-                          "battery": {
-                            "type": "number",
-                            "format": "float"
-                          },
-                          "devices": {
-                            "type": "object",
-                            "properties": {
-                              "data": {
-                                "type": "array",
-                                "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "attributes": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "device": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -1226,19 +1237,21 @@
                                         "model": {
                                           "type": "string"
                                         },
-                                        "repairs": {},
-                                        "repair": {
+                                        "repairs": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "number"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "number"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }
@@ -1546,49 +1559,53 @@
                                   }
                                 }
                               }
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "updatedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "publishedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "createdBy": {
-                            "type": "object",
-                            "properties": {
-                              "data": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "attributes": {
-                                    "type": "object",
-                                    "properties": {}
+                            },
+                            "price": {
+                              "type": "number",
+                              "format": "float"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "publishedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "createdBy": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "number"
+                                    },
+                                    "attributes": {
+                                      "type": "object",
+                                      "properties": {}
+                                    }
                                   }
                                 }
                               }
-                            }
-                          },
-                          "updatedBy": {
-                            "type": "object",
-                            "properties": {
-                              "data": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "attributes": {
-                                    "type": "object",
-                                    "properties": {}
+                            },
+                            "updatedBy": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "number"
+                                    },
+                                    "attributes": {
+                                      "type": "object",
+                                      "properties": {}
+                                    }
                                   }
                                 }
                               }
@@ -1675,29 +1692,27 @@
               "model": {
                 "type": "string"
               },
-              "repairs": {},
-              "repair": {
+              "repairs": {
                 "type": "object",
                 "properties": {
                   "data": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "number"
-                      },
-                      "attributes": {
-                        "type": "object",
-                        "properties": {
-                          "battery": {
-                            "type": "number",
-                            "format": "float"
-                          },
-                          "devices": {
-                            "type": "object",
-                            "properties": {
-                              "data": {
-                                "type": "array",
-                                "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "attributes": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "device": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -1722,19 +1737,21 @@
                                         "model": {
                                           "type": "string"
                                         },
-                                        "repairs": {},
-                                        "repair": {
+                                        "repairs": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "number"
-                                                },
-                                                "attributes": {
-                                                  "type": "object",
-                                                  "properties": {}
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "number"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
                                                 }
                                               }
                                             }
@@ -2042,49 +2059,53 @@
                                   }
                                 }
                               }
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "updatedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "publishedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "createdBy": {
-                            "type": "object",
-                            "properties": {
-                              "data": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "attributes": {
-                                    "type": "object",
-                                    "properties": {}
+                            },
+                            "price": {
+                              "type": "number",
+                              "format": "float"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "publishedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "createdBy": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "number"
+                                    },
+                                    "attributes": {
+                                      "type": "object",
+                                      "properties": {}
+                                    }
                                   }
                                 }
                               }
-                            }
-                          },
-                          "updatedBy": {
-                            "type": "object",
-                            "properties": {
-                              "data": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "number"
-                                  },
-                                  "attributes": {
-                                    "type": "object",
-                                    "properties": {}
+                            },
+                            "updatedBy": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "number"
+                                    },
+                                    "attributes": {
+                                      "type": "object",
+                                      "properties": {}
+                                    }
                                   }
                                 }
                               }
@@ -4997,26 +5018,29 @@
         ],
         "properties": {
           "data": {
-            "required": [],
+            "required": [
+              "name",
+              "price"
+            ],
             "type": "object",
             "properties": {
-              "battery": {
+              "name": {
+                "type": "string"
+              },
+              "device": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "string or id"
+              },
+              "price": {
                 "type": "number",
                 "format": "float"
-              },
-              "devices": {
-                "type": "array",
-                "items": {
-                  "oneOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ],
-                  "example": "string or id"
-                }
               }
             }
           }
@@ -5031,45 +5055,43 @@
           "attributes": {
             "type": "object",
             "properties": {
-              "battery": {
-                "type": "number",
-                "format": "float"
+              "name": {
+                "type": "string"
               },
-              "devices": {
+              "device": {
                 "type": "object",
                 "properties": {
                   "data": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "attributes": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "Phone",
-                                "Tablet",
-                                "Watch",
-                                "Console",
-                                "Other"
-                              ]
-                            },
-                            "make": {
-                              "type": "string"
-                            },
-                            "model": {
-                              "type": "string"
-                            },
-                            "repairs": {},
-                            "repair": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "Phone",
+                              "Tablet",
+                              "Watch",
+                              "Console",
+                              "Other"
+                            ]
+                          },
+                          "make": {
+                            "type": "string"
+                          },
+                          "model": {
+                            "type": "string"
+                          },
+                          "repairs": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "array",
+                                "items": {
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -5078,29 +5100,29 @@
                                     "attributes": {
                                       "type": "object",
                                       "properties": {
-                                        "battery": {
-                                          "type": "number",
-                                          "format": "float"
+                                        "name": {
+                                          "type": "string"
                                         },
-                                        "devices": {
+                                        "device": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
-                                              "type": "array",
-                                              "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "number"
-                                                  },
-                                                  "attributes": {
-                                                    "type": "object",
-                                                    "properties": {}
-                                                  }
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
+                                                  "type": "number"
+                                                },
+                                                "attributes": {
+                                                  "type": "object",
+                                                  "properties": {}
                                                 }
                                               }
                                             }
                                           }
+                                        },
+                                        "price": {
+                                          "type": "number",
+                                          "format": "float"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -5404,49 +5426,49 @@
                                   }
                                 }
                               }
-                            },
-                            "createdAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "updatedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "publishedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "createdBy": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "number"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "publishedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "createdBy": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "number"
+                                  },
+                                  "attributes": {
+                                    "type": "object",
+                                    "properties": {}
                                   }
                                 }
                               }
-                            },
-                            "updatedBy": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "number"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
+                            }
+                          },
+                          "updatedBy": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "number"
+                                  },
+                                  "attributes": {
+                                    "type": "object",
+                                    "properties": {}
                                   }
                                 }
                               }
@@ -5457,6 +5479,10 @@
                     }
                   }
                 }
+              },
+              "price": {
+                "type": "number",
+                "format": "float"
               },
               "createdAt": {
                 "type": "string",
@@ -5517,45 +5543,43 @@
           "attributes": {
             "type": "object",
             "properties": {
-              "battery": {
-                "type": "number",
-                "format": "float"
+              "name": {
+                "type": "string"
               },
-              "devices": {
+              "device": {
                 "type": "object",
                 "properties": {
                   "data": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "attributes": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "Phone",
-                                "Tablet",
-                                "Watch",
-                                "Console",
-                                "Other"
-                              ]
-                            },
-                            "make": {
-                              "type": "string"
-                            },
-                            "model": {
-                              "type": "string"
-                            },
-                            "repairs": {},
-                            "repair": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "Phone",
+                              "Tablet",
+                              "Watch",
+                              "Console",
+                              "Other"
+                            ]
+                          },
+                          "make": {
+                            "type": "string"
+                          },
+                          "model": {
+                            "type": "string"
+                          },
+                          "repairs": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "array",
+                                "items": {
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -5564,29 +5588,29 @@
                                     "attributes": {
                                       "type": "object",
                                       "properties": {
-                                        "battery": {
-                                          "type": "number",
-                                          "format": "float"
+                                        "name": {
+                                          "type": "string"
                                         },
-                                        "devices": {
+                                        "device": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
-                                              "type": "array",
-                                              "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "number"
-                                                  },
-                                                  "attributes": {
-                                                    "type": "object",
-                                                    "properties": {}
-                                                  }
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
+                                                  "type": "number"
+                                                },
+                                                "attributes": {
+                                                  "type": "object",
+                                                  "properties": {}
                                                 }
                                               }
                                             }
                                           }
+                                        },
+                                        "price": {
+                                          "type": "number",
+                                          "format": "float"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -5890,49 +5914,49 @@
                                   }
                                 }
                               }
-                            },
-                            "createdAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "updatedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "publishedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "createdBy": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "number"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "publishedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "createdBy": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "number"
+                                  },
+                                  "attributes": {
+                                    "type": "object",
+                                    "properties": {}
                                   }
                                 }
                               }
-                            },
-                            "updatedBy": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "number"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
+                            }
+                          },
+                          "updatedBy": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "number"
+                                  },
+                                  "attributes": {
+                                    "type": "object",
+                                    "properties": {}
                                   }
                                 }
                               }
@@ -5943,6 +5967,10 @@
                     }
                   }
                 }
+              },
+              "price": {
+                "type": "number",
+                "format": "float"
               },
               "createdAt": {
                 "type": "string",
@@ -6036,45 +6064,43 @@
           "attributes": {
             "type": "object",
             "properties": {
-              "battery": {
-                "type": "number",
-                "format": "float"
+              "name": {
+                "type": "string"
               },
-              "devices": {
+              "device": {
                 "type": "object",
                 "properties": {
                   "data": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "attributes": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "Phone",
-                                "Tablet",
-                                "Watch",
-                                "Console",
-                                "Other"
-                              ]
-                            },
-                            "make": {
-                              "type": "string"
-                            },
-                            "model": {
-                              "type": "string"
-                            },
-                            "repairs": {},
-                            "repair": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "Phone",
+                              "Tablet",
+                              "Watch",
+                              "Console",
+                              "Other"
+                            ]
+                          },
+                          "make": {
+                            "type": "string"
+                          },
+                          "model": {
+                            "type": "string"
+                          },
+                          "repairs": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "array",
+                                "items": {
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -6083,29 +6109,29 @@
                                     "attributes": {
                                       "type": "object",
                                       "properties": {
-                                        "battery": {
-                                          "type": "number",
-                                          "format": "float"
+                                        "name": {
+                                          "type": "string"
                                         },
-                                        "devices": {
+                                        "device": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
-                                              "type": "array",
-                                              "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "number"
-                                                  },
-                                                  "attributes": {
-                                                    "type": "object",
-                                                    "properties": {}
-                                                  }
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
+                                                  "type": "number"
+                                                },
+                                                "attributes": {
+                                                  "type": "object",
+                                                  "properties": {}
                                                 }
                                               }
                                             }
                                           }
+                                        },
+                                        "price": {
+                                          "type": "number",
+                                          "format": "float"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -6409,49 +6435,49 @@
                                   }
                                 }
                               }
-                            },
-                            "createdAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "updatedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "publishedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "createdBy": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "number"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "publishedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "createdBy": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "number"
+                                  },
+                                  "attributes": {
+                                    "type": "object",
+                                    "properties": {}
                                   }
                                 }
                               }
-                            },
-                            "updatedBy": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "number"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
+                            }
+                          },
+                          "updatedBy": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "number"
+                                  },
+                                  "attributes": {
+                                    "type": "object",
+                                    "properties": {}
                                   }
                                 }
                               }
@@ -6462,6 +6488,10 @@
                     }
                   }
                 }
+              },
+              "price": {
+                "type": "number",
+                "format": "float"
               },
               "createdAt": {
                 "type": "string",
@@ -6522,45 +6552,43 @@
           "attributes": {
             "type": "object",
             "properties": {
-              "battery": {
-                "type": "number",
-                "format": "float"
+              "name": {
+                "type": "string"
               },
-              "devices": {
+              "device": {
                 "type": "object",
                 "properties": {
                   "data": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "attributes": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "Phone",
-                                "Tablet",
-                                "Watch",
-                                "Console",
-                                "Other"
-                              ]
-                            },
-                            "make": {
-                              "type": "string"
-                            },
-                            "model": {
-                              "type": "string"
-                            },
-                            "repairs": {},
-                            "repair": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "Phone",
+                              "Tablet",
+                              "Watch",
+                              "Console",
+                              "Other"
+                            ]
+                          },
+                          "make": {
+                            "type": "string"
+                          },
+                          "model": {
+                            "type": "string"
+                          },
+                          "repairs": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "array",
+                                "items": {
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -6569,29 +6597,29 @@
                                     "attributes": {
                                       "type": "object",
                                       "properties": {
-                                        "battery": {
-                                          "type": "number",
-                                          "format": "float"
+                                        "name": {
+                                          "type": "string"
                                         },
-                                        "devices": {
+                                        "device": {
                                           "type": "object",
                                           "properties": {
                                             "data": {
-                                              "type": "array",
-                                              "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "number"
-                                                  },
-                                                  "attributes": {
-                                                    "type": "object",
-                                                    "properties": {}
-                                                  }
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
+                                                  "type": "number"
+                                                },
+                                                "attributes": {
+                                                  "type": "object",
+                                                  "properties": {}
                                                 }
                                               }
                                             }
                                           }
+                                        },
+                                        "price": {
+                                          "type": "number",
+                                          "format": "float"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -6895,49 +6923,49 @@
                                   }
                                 }
                               }
-                            },
-                            "createdAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "updatedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "publishedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "createdBy": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "number"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "publishedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "createdBy": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "number"
+                                  },
+                                  "attributes": {
+                                    "type": "object",
+                                    "properties": {}
                                   }
                                 }
                               }
-                            },
-                            "updatedBy": {
-                              "type": "object",
-                              "properties": {
-                                "data": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "number"
-                                    },
-                                    "attributes": {
-                                      "type": "object",
-                                      "properties": {}
-                                    }
+                            }
+                          },
+                          "updatedBy": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "number"
+                                  },
+                                  "attributes": {
+                                    "type": "object",
+                                    "properties": {}
                                   }
                                 }
                               }
@@ -6948,6 +6976,10 @@
                     }
                   }
                 }
+              },
+              "price": {
+                "type": "number",
+                "format": "float"
               },
               "createdAt": {
                 "type": "string",
