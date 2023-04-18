@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "devices",
+  "info": {
+    "singularName": "device",
+    "pluralName": "devices",
+    "displayName": "Device"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Phone",
+        "Tablet",
+        "Watch",
+        "Console",
+        "Other"
+      ]
+    },
+    "make": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "repairs": {
+      "type": "json"
+    },
+    "repair": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::repair.repair",
+      "inversedBy": "devices"
+    }
+  }
+}

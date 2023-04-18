@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leads",
+  "info": {
+    "singularName": "lead",
+    "pluralName": "leads",
+    "displayName": "Lead"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "biginteger"
+    },
+    "make": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "repair": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    },
+    "emailed": {
+      "type": "boolean"
+    },
+    "converted": {
+      "type": "boolean"
+    }
+  }
+}
